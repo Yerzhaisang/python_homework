@@ -30,8 +30,7 @@ def calc(a, b, operation="multiply"):
     except ZeroDivisionError:
         return "You can't divide by 0!"
     except TypeError:
-        return f"You can't {operation} those values!"
-
+        return "You can't multiply those values!"
 
 # Task 4: Data Type Conversion
 
