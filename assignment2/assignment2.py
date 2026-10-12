@@ -1,5 +1,13 @@
+"""Solutions for Python Assignment 2.
+
+CSV paths follow the assignment layout: assignment2/ sits beside csv/.
+When the supplied inputs are absent, the corresponding global data values
+are empty so the module can still be imported while the project is prepared.
+"""
+
 import csv
 import os
+import traceback
 from datetime import datetime
 
 import custom_module
@@ -17,10 +25,22 @@ def _read_csv(path, rows_as_tuples=False):
                     data["fields"] = row
                 else:
                     data["rows"].append(tuple(row) if rows_as_tuples else row)
-    except FileNotFoundError:
-        # The assignment's three source CSV files were not included. Keeping
-        # the empty structure lets functions and tests import independently.
-        pass
+    except Exception as error:
+        # The assignment's source CSV files may not be present yet. Keep an
+        # empty structure so the module can still be imported, and report
+        # the failure with enough detail to diagnose it.
+        print("An exception occurred.")
+        print(f"Exception type: {type(error).__name__}")
+        message = str(error)
+        if message:
+            print(f"Exception message: {message}")
+        trace_back = traceback.extract_tb(error.__traceback__)
+        stack_trace = [
+            f"File : {trace[0]} , Line : {trace[1]}, "
+            f"Func.Name : {trace[2]}, Message : {trace[3]}"
+            for trace in trace_back
+        ]
+        print(f"Stack trace: {stack_trace}")
     return data
 
 
