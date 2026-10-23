@@ -48,7 +48,7 @@ dirty_data = pd.read_csv("dirty_data.csv")
 print(dirty_data)
 
 clean_data = dirty_data.copy()
-clean_data = clean_data.drop_duplicates()
+clean_data.drop_duplicates()
 print(clean_data)
 
 clean_data["Age"] = pd.to_numeric(clean_data["Age"], errors="coerce")
@@ -69,6 +69,7 @@ clean_data["Hire Date"] = pd.to_datetime(
 )
 print(clean_data)
 
+# Task 4 asks for both names and departments to be standardized in uppercase.
 clean_data["Name"] = clean_data["Name"].str.strip().str.upper()
 clean_data["Department"] = clean_data["Department"].str.strip().str.upper()
 print(clean_data)
