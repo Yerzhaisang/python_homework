@@ -69,7 +69,7 @@ ddf = pd.read_csv(StringIO(sample_data))
 tdf = ddf.copy()
 
 # Perform the same cleaning steps
-tdf.drop_duplicates(inplace=True)
+tdf.drop_duplicates()
 tdf['Age'] = pd.to_numeric(tdf['Age'], errors='coerce')
 tdf['Salary'] = tdf['Salary'].replace(['unknown', 'n/a'], pd.NA)
 tdf['Salary'] = pd.to_numeric(tdf['Salary'], errors='coerce')
