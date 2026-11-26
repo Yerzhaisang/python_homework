@@ -1,3 +1,4 @@
+# Task 6: Extract and export the OWASP Top 10.
 import csv
 from pathlib import Path
 from pprint import pprint
@@ -20,6 +21,7 @@ def main():
     options.add_argument("--headless")
     service = Service(ChromeDriverManager().install())
 
+    # Task 6, steps 2–3: Load the project page and find the risk links with XPath.
     with webdriver.Chrome(service=service, options=options) as driver:
         wait = WebDriverWait(driver, 20)
         driver.get(URL)
@@ -33,6 +35,7 @@ def main():
     if len(results) != 10:
         raise RuntimeError(f"Expected 10 OWASP risks, found {len(results)}.")
 
+    # Task 6, step 4: Print the results and write them to CSV.
     pprint(results, sort_dicts=False)
     with OUTPUT_FILE.open("w", encoding="utf-8", newline="") as output:
         writer = csv.DictWriter(output, fieldnames=["Title", "Link"])

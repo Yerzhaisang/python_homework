@@ -1,3 +1,4 @@
+# Task 3: Extract books from the homepage.
 import json
 from pathlib import Path
 
@@ -17,6 +18,7 @@ def main():
     service = Service(ChromeDriverManager().install())
     results = []
 
+    # Task 3: Load the homepage and collect the title, price, and rating.
     with webdriver.Chrome(service=service, options=options) as driver:
         driver.get(URL)
         books = driver.find_elements(By.CSS_SELECTOR, "article.product_pod")
@@ -34,6 +36,8 @@ def main():
 
     books_df = pd.DataFrame(results)
     print(books_df)
+
+    # Task 4: Write the books to CSV and JSON.
     books_df.to_csv(OUTPUT_DIR / "get_books.csv", index=False, encoding="utf-8")
 
     with (OUTPUT_DIR / "get_books.json").open("w", encoding="utf-8") as output:
