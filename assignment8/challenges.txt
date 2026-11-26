@@ -1,0 +1,15 @@
+The two robots.txt checks produced different results. Books to Scrape
+returned HTTP 404 and explicitly invites scraping for practice on its
+homepage. The Durham County library catalog returned a default Disallow
+rule for the entire site, so I stopped after reading its robots.txt.
+
+Some of the book titles displayed on the homepage end in an ellipsis.
+I used the title attribute of the link inside each book's heading to
+preserve the full title. The star rating was also missing from the
+visible text, so I split the rating element's class attribute and kept
+the rating word.
+
+The OWASP project URL leads to a project overview that links to the
+2025 edition. I followed that link and used XPath to select the ordered
+list starting with A01:2025. This kept navigation links and earlier
+editions out of the export.
