@@ -1,0 +1,25 @@
+English Wikipedia robots.txt
+https://en.wikipedia.org/robots.txt
+
+Which sections are restricted for crawling?
+
+The default rules restrict /w/, /api/, /trap/, and Special pages, including
+encoded versions of the Special namespace. They also restrict specific
+community and administrative pages, such as article deletion discussions,
+copyright problems, protected titles, the spam blacklist, arbitration, and
+requests for adminship. The file lists limited exceptions for resources such
+as the sitemap and certain API and resource-loader URLs. Ordinary article
+pages are generally available to crawlers following the default rules.
+
+Are there rules for specific user agents?
+
+Yes. MJ12bot, UbiCrawler, and wget are disallowed from crawling the entire
+site. SemrushBot has a five-second crawl delay. Wikipedia work bots IsraBot
+and Orthogaffe each have an empty Disallow directive in their own groups.
+
+Reflection
+
+Robots.txt gives website operators a standard way to tell automated crawlers
+which URLs they may request and, in some cases, how frequently they should
+make requests. Checking and following those rules helps scrapers respect the
+site operator's preferences and limit unnecessary server load.
